@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from './user.service';
 import { CookieService } from 'ngx-cookie-service';
+import { FeedsComponent } from './feeds/feeds.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FeedsComponent
   ],
   imports: [
     BrowserModule,

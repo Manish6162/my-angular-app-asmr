@@ -1,0 +1,27 @@
+  
+  <!-- feeds-list.component.html -->
+  
+  <div *ngFor="let feed of orderedFeeds; let i = index" class="feed-item">
+    <div class="user-info">
+      <img [src]="feed.profilePicUrl" alt="Profile Pic" class="user-profile-pic">
+      <span class="username">{{ feed.userId }}</span>
+    </div>
+    <div class="file-media">
+      <img [src]="feed.url" alt="Media">
+    </div>
+    <div class="actions">
+      <button (click)="likeFeed(feed.feedId, i)">
+        <i class="fas fa-heart"></i> Like
+      </button>
+      <button>
+        <i class="fas fa-comment"></i> Comment
+      </button>
+      <button (click)="downloadFile(feed.url)">
+        <i class="fas fa-download"></i> Download
+      </button>
+      <button (click)="reportFeed(feed.feedId)">
+        <i class="fas fa-flag"></i> Report Feed
+      </button>
+    </div>
+  </div>
+  
