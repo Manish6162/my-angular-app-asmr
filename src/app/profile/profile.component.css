@@ -1,0 +1,42 @@
+/* src/app/profile/profile.component.css */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340px; /* Adjust the width as needed */
+  height: 50vh; /* Adjust height as needed */
+  background-color: white;
+  border-left: 1px solid #dbdbdb;
+  padding: 20px; /* Adjust padding as needed */
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: hidden; /* Ensure content fits within the element */
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%; /* Ensures content takes full width */
+  text-align: center; /* Center-align text */
+}
+
+.profile-pic {
+  width: 60px; /* Adjust size if needed */
+  height: 60px; /* Adjust size if needed */
+  border-radius: 50%;
+  margin-bottom: 10px; /* Adjust spacing below the image */
+}
+
+.username {
+  font-size: 1rem; /* Increase font size for better visibility */
+  font-weight: bold;
+  white-space: normal; /* Allow text to wrap if needed */
+  overflow: visible; /* Ensure text is visible */
+
+  width: 100%; /* Ensure span takes full width of the container */
+
+  text-align: center; /* Center align the text */
+
+}

@@ -1,6 +1,5 @@
+// src/app/header/header.component.ts
 import { Component, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-
 
 @Component({
   selector: 'app-header',
@@ -8,9 +7,5 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Input() username!: string;
-
-  constructor(private dialog: MatDialog) {}
-
-
+  @Input() generatedUsername: string = '';
 }

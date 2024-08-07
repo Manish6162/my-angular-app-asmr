@@ -1,2 +1,9 @@
-<app-header [username]="generatedUsername" ></app-header>
-
+<!-- src/app/app.component.html -->
+<div class="main-container">
+    <app-header [generatedUsername]="generatedUsername"></app-header>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <app-profile [generatedUsername]="generatedUsername"></app-profile>
+  </div>
+  

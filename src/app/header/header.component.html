@@ -1,17 +1,35 @@
-<!-- header.component.html -->
-
+<!-- src/app/header/header.component.html -->
 <header class="header">
-  <div class="header-logo">
-      <img src="assets/logo.png" alt="Logo">
-      MyApp
-  </div>
   <nav class="header-nav">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+
+    <a routerLink="/profile" title="Profile">
+      <img class="profile-pic" src="https://mediastorageasmr.blob.core.windows.net/profilepiccontainer/pixi.png" alt="Profile">
+      <span>PIXI</span>
+    </a>
+
+    <a routerLink="/home" title="Home">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a routerLink="/search" title="Search">
+      <i class="fas fa-search"></i>
+      <span>Search</span>
+    </a>
+    <a routerLink="/reels" title="Reels">
+      <i class="fas fa-film"></i>
+      <span>Reels</span>
+    </a>
+    <a routerLink="/messages" title="Messages">
+      <i class="fas fa-envelope"></i>
+      <span>Messages</span>
+    </a>
+    <a routerLink="/notifications" title="Notifications">
+      <i class="fas fa-bell"></i>
+      <span>Notifications</span>
+    </a>
+    <a routerLink="/profile" title="Profile">
+      <img class="profile-pic" src="https://mediastorageasmr.blob.core.windows.net/profilepiccontainer/adrianna-geo-1rBg5YSi00c-unsplash.jpg" alt="Profile">
+      <span>Profile</span>
+    </a>
   </nav>
-  <div class="header-profile">
-     
-      <span>{{username}}</span>
-  </div>
 </header>
