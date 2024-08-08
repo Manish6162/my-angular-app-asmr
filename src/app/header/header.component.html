@@ -1,12 +1,20 @@
-<!-- src/app/header/header.component.html -->
 <header class="header">
   <nav class="header-nav">
-
+    <!-- Existing navigation items -->
     <a routerLink="/profile" title="Profile">
       <img class="profile-pic" src="https://mediastorageasmr.blob.core.windows.net/profilepiccontainer/pixi.png" alt="Profile">
       <span>PIXI</span>
     </a>
+    <a routerLink="/profile" title="Profile">
+      <img class="profile-pic" src="https://mediastorageasmr.blob.core.windows.net/profilepiccontainer/adrianna-geo-1rBg5YSi00c-unsplash.jpg" alt="Profile">
+      <span>Profile</span>
+    </a>
 
+    <!-- New Create button -->
+    <button (click)="openCreatePopup()" title="Create" class="create-button">
+      <i class="fas fa-plus-circle"></i>
+      <span>Create</span>
+    </button>
     <a routerLink="/home" title="Home">
       <i class="fas fa-home"></i>
       <span>Home</span>
@@ -27,9 +35,6 @@
       <i class="fas fa-bell"></i>
       <span>Notifications</span>
     </a>
-    <a routerLink="/profile" title="Profile">
-      <img class="profile-pic" src="https://mediastorageasmr.blob.core.windows.net/profilepiccontainer/adrianna-geo-1rBg5YSi00c-unsplash.jpg" alt="Profile">
-      <span>Profile</span>
-    </a>
+
   </nav>
 </header>

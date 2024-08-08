@@ -1,6 +1,8 @@
 <!-- src/app/profile/profile.component.html -->
 <!-- src/app/profile/profile.component.html -->
+
 <aside class="profile">
+  <input type="text" [(ngModel)]="loginId" placeholder="Log in with your unique ID" >
   <div class="profile-content">
     <img class="profile-pic" src="https://mediastorageasmr.blob.core.windows.net/profilepiccontainer/adrianna-geo-1rBg5YSi00c-unsplash.jpg" alt="Profile Picture">
     <span class="username">{{ generatedUsername }}</span>

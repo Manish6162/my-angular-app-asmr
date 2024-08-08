@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Upload Media</h2>
+<div mat-dialog-content>
+  <input type="file" (change)="onFileSelected($event)" />
+  <mat-progress-bar mode="determinate" [value]="uploadProgress"></mat-progress-bar>
+  <div *ngIf="thumbnailUrl">
+    <img [src]="thumbnailUrl" alt="Thumbnail" style="width: 100%; margin-top: 10px;" />
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+</div>

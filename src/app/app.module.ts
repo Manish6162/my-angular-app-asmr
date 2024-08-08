@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from './user.service';
@@ -16,7 +18,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
-import { HeaderhComponent } from './headerh/headerh.component'; 
+import { HeaderhComponent } from './headerh/headerh.component';
+import { CreatePopupComponent } from './create-popup/create-popup.component'; 
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { HeaderhComponent } from './headerh/headerh.component';
     NotificationsComponent,
     ProfileComponent,
     HeaderhComponent,
+    CreatePopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,8 @@ import { HeaderhComponent } from './headerh/headerh.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatButtonModule,
+    MatProgressBarModule,
     AppRoutingModule
   ],
   providers: [UserService, CookieService],
