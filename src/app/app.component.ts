@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
-import { HttpClient } from '@angular/common/http';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 @Component({
@@ -10,32 +9,25 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs';
 })
 export class AppComponent implements OnInit {
   generatedUsername: string = '';
-  deviceId: string = '';
 
-  constructor(private userService: UserService, private http: HttpClient) {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {
-    this.checkAndSetUserInfo();
+  async ngOnInit() {
+    await this.checkAndSetUserInfo();
   }
 
   async checkAndSetUserInfo(): Promise<void> {
     try {
-      // Initialize FingerprintJS
       const fp = await FingerprintJS.load();
       const result = await fp.get();
-      this.deviceId = result.visitorId;
+      const deviceId = result.visitorId;
 
-      localStorage.setItem('deviceId', this.deviceId);
-      this.setCookie('deviceId', this.deviceId, 365 * 5); // Set cookie for 5 years
-
-      const metadata = await this.collectUserMetadata();
-      this.userService.checkAndGenerateUser(metadata).subscribe(
+      const metadata = await this.collectUserMetadata(deviceId);
+      this.userService.checkOrGenerateUser(metadata).subscribe(
         (response: any) => {
           const { username } = response;
           if (username) {
             this.generatedUsername = username;
-            this.setCookie('username', username, 365 * 5); // Set cookie for 5 years
-            console.log('Username:', username);
           } else {
             console.error('Invalid API response:', response);
           }
@@ -49,15 +41,25 @@ export class AppComponent implements OnInit {
     }
   }
 
-  async collectUserMetadata(): Promise<{ deviceId: string; userAgent: string; browserInfo: string }> {
+  async collectUserMetadata(deviceId: string): Promise<{ deviceId: string; userAgent: string; browserInfo: string; screenResolution: string; timezone: string; hardwareInfo: string; operatingSystem: string; ip: string }> {
     try {
       const userAgent = navigator.userAgent;
       const browserInfo = this.getBrowserInfo();
+      const screenResolution = `${window.screen.width}x${window.screen.height}`;
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const hardwareInfo = navigator.hardwareConcurrency ? `CPU Cores: ${navigator.hardwareConcurrency}` : 'Unknown';
+      const operatingSystem = this.getOperatingSystem();
+      const ip = await this.getIpAddress();
 
       return {
-        deviceId: this.deviceId,
+        deviceId: deviceId,
         userAgent: userAgent,
-        browserInfo: browserInfo
+        browserInfo: browserInfo,
+        screenResolution: screenResolution,
+        timezone: timezone,
+        hardwareInfo: hardwareInfo,
+        operatingSystem: operatingSystem,
+        ip: ip
       };
     } catch (error) {
       console.error('Error fetching metadata:', error);
@@ -70,21 +72,24 @@ export class AppComponent implements OnInit {
     return `AppName: ${appName}, AppVersion: ${appVersion}, Platform: ${platform}`;
   }
 
-  setCookie(name: string, value: string, days: number) {
-    const d = new Date();
-    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  getOperatingSystem(): string {
+    let os = 'Unknown';
+    const { userAgent } = navigator;
+    if (userAgent.indexOf('Win') !== -1) os = 'Windows';
+    else if (userAgent.indexOf('Mac') !== -1) os = 'MacOS';
+    else if (userAgent.indexOf('X11') !== -1) os = 'UNIX';
+    else if (userAgent.indexOf('Linux') !== -1) os = 'Linux';
+    return os;
   }
 
-  getCookie(name: string): string {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  async getIpAddress(): Promise<string> {
+    try {
+      const response = await fetch('https://api.ipify.org?format=json');
+      const data = await response.json();
+      return data.ip;
+    } catch (error) {
+      console.error('Error fetching IP address:', error);
+      return 'Unknown';
     }
-    return '';
   }
 }

@@ -1,0 +1,7 @@
+<div class="header-container">
+  <h1>This is your unique Log In ID. 
+    <p class="guid">{{ userId }}</p>
+    Save this to access all your previous chats, likes, comments:</h1>
+  <!-- Display the userId returned from the API -->
+  <input type="text" [(ngModel)]="loginId" placeholder="Log in with your unique ID" (blur)="validateLoginId()">
+</div>

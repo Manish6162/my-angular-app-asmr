@@ -15,6 +15,8 @@ import { ReelsComponent } from './reels/reels.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
+import { HeaderhComponent } from './headerh/headerh.component'; 
 
 @NgModule({
   declarations: [
@@ -26,10 +28,12 @@ import { ProfileComponent } from './profile/profile.component';
     ReelsComponent,
     MessagesComponent,
     NotificationsComponent,
-    ProfileComponent
+    ProfileComponent,
+    HeaderhComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,

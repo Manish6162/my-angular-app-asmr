@@ -1,0 +1,29 @@
+.header-container {
+  width: 60%; /* Adjust width as needed */
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  z-index: 1000;
+  text-align: center;
+}
+
+.header-container h1 {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.guid {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 16px;
+}
+
+input {
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 14px;
+}

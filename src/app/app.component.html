@@ -1,9 +1,8 @@
-<!-- src/app/app.component.html -->
 <div class="main-container">
-    <app-header [generatedUsername]="generatedUsername"></app-header>
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
-    <app-profile [generatedUsername]="generatedUsername"></app-profile>
+  <app-headerh [generatedUsername]="generatedUsername"></app-headerh>
+  <app-header [generatedUsername]="generatedUsername"></app-header>
+  <div class="content">
+    <router-outlet></router-outlet>
   </div>
-  
+  <app-profile [generatedUsername]="generatedUsername"></app-profile>
+</div>
