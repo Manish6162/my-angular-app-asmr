@@ -1,0 +1,19 @@
+.popup-container {
+    text-align: center;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  mat-progress-bar {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+  }
+  

@@ -9,13 +9,19 @@ import { CreatePopupComponent } from '../create-popup/create-popup.component';
 })
 export class HeaderComponent {
   @Input() generatedUsername: string = '';
+  @Input() userId: string = '';  // Add userId as an input
 
   constructor(private dialog: MatDialog) {}
 
   openCreatePopup(): void {
-    this.dialog.open(CreatePopupComponent, {
+    const dialogRef = this.dialog.open(CreatePopupComponent, {
       width: '400px',
-      height: '300px'
+      height: '300px',
+      data: { userId: this.userId }  // Pass userId to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Create popup closed');
     });
   }
 }
